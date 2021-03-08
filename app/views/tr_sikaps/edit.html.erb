@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_sikaps) do |tr_sikap| %>
+
+
+        <div class="form-group">
+          <%= tr_sikap.label :Tanggal %>
+          <%= tr_sikap.text_field :tanggal, class:'form-control', type: 'date', placeholder: '',required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= tr_sikap.label :Jenis_Kode %>
+          <%= tr_sikap.select(:jenis_kode, [['P','P'], ['H','H']]) %>
+        </div>
+        <div class="form-group">
+           <%= tr_sikap.label :Kode %>
+          <%= tr_sikap.collection_select(:kode, MsKode.all, :kode, :kode) %>
+        </div>
+        <div class="form-group">
+          <%= tr_sikap.label :Saksi %>
+          <%= tr_sikap.text_field :saksi, class:'form-control', type: 'text', placeholder: '',required: true %>
+        </div>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_sikaps', class: 'btn btn-primary' %>
+        </div>
+        <div style="float: right">
+  <%= tr_sikap.submit :Save, class:'btn btn-success' %>
+</div>
+    <% end %>
+  </div>
+</div>

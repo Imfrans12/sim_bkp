@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%= root_path %>">
+      <span>SIM BKP</span>
+    </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      
+       <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="DashboardDropdown" role="button" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false"> Menu
+            </a>
+            <div class="dropdown-menu" aria-labelledby="DashboardDropdown">
+             
+                <a class="dropdown-item" href="/tr_sikaps">Catatan Sikap</a>
+                <a class="dropdown-item" href="/tr_motivasis">Zona Motivasi</a>         
+                <a class="dropdown-item" href="/tr_esds">ESD</a>
+                <a class="dropdown-item" href="/tr_phbs">PHBS</a>
+                <% if current_ms_user.agama == "Islam" %>
+                <a class="dropdown-item" href="/tr_shalat_fardus">Shalat Fardhu</a>
+                <a class="dropdown-item" href="/tr_shalat_dhuhas">Shalat Dhuha & Tahajud</a>
+                <a class="dropdown-item" href="/tr_shalat_jumats">Shalat Jumat</a>
+                <a class="dropdown-item" href="/tr_ceramahs">Ikhtisar Ceramah PHBI</a>
+                <a class="dropdown-item" href="/tr_pengajians">Pengajian Malam</a>
+                <a class="dropdown-item" href="/tr_juzs">Juz Amma</a>
+                <a class="dropdown-item" href="/tr_keagamaans">Ikhtisar Kegiatan Keagamaan</a>
+                <% else %>
+                <a class="dropdown-item" href="/tr_renungans">Kegiatan Renungan</a>
+                <% end %>
+                <a class="dropdown-item" href="/tr_jurnals">Jurnal Membaca</a>
+            </div>
+          </li>
+    </ul>
+  </div>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+            <%= current_ms_user.name %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to('Logout', destroy_ms_user_session_path, method: :delete, class: 'dropdown-item') %> 
+            </div>
+          </li>
+        </ul>
+</nav>
+
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>

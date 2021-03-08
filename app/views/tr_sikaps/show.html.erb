@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_sikap) do |tr_sikap| %>
+
+
+        <div class="form-group">
+          <%= tr_sikap.label :Tanggal %>
+          <%= tr_sikap.text_field :tanggal, class:'form-control', type: 'date', placeholder: '', disabled: true %>
+        </div>
+
+        <div class="form-group">
+          <%= tr_sikap.label :Jenis_Kode %>
+          <%= tr_sikap.text_field :jenis_kode,  disabled: true %>
+        </div>
+        <div class="form-group">
+           <%= tr_sikap.label :Kode %>
+          <%= tr_sikap.text_field :kode, disabled: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_sikap.label :Saksi %>
+          <%= tr_sikap.text_field :saksi, class:'form-control', type: 'text', placeholder: '', disabled: true %>
+        </div>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_sikaps', class: 'btn btn-primary' %>
+</div>
+
+    <% end %>
+  </div>
+</div>

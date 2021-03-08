@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_shalat_jumat) do |tr_shalat_jumat| %>
+
+
+        <div class="form-group">
+          <%= tr_shalat_jumat.label :Tanggal %>
+          <%= tr_shalat_jumat.text_field :tanggal, class:'form-control', type: 'date', placeholder: '', disabled: true %>
+        </div>
+
+        <%= tr_shalat_jumat.hidden_field :nama, value: current_ms_user.name %>
+        <%= tr_shalat_jumat.hidden_field :status, value: "Menunggu Di Terima" %>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_shalat_jumats', class: 'btn btn-primary' %>
+        </div>
+       
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+class TrSikap < ApplicationRecord
+end

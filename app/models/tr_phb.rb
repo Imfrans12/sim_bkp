@@ -1,0 +1,2 @@
+class TrPhb < ApplicationRecord
+end

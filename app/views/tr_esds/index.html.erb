@@ -1,0 +1,35 @@
+<br>
+<center><h5>Implementasi Education Sustainable Development</h5></center>
+<div style="float: right">
+  <%= link_to 'Add Data', new_tr_esd_path, class: 'btn btn-success' %>
+</div>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Tanggal</th>
+      <th scope="col">Esensi ESD</th>
+      <th scope="col">Jenis Kegiatan</th>
+      <th scope="col">Bukti </th>
+      <th scope="col">Status</th>
+      <th scope="col" width="300">Action</th>
+    </tr>
+  </thead>
+<% @tr_esds.each_with_index do |tr_esd, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_esd.tanggal %> </td>
+      <td> <%= tr_esd.esensi_esd %> </td>
+      <td> <%= tr_esd.jenis_kegiatan %> </td>
+      <td> <img height="200px" width="200px" src="<%=(url_for(tr_esd.bukti))%>"> </td>
+      <td> <%= tr_esd.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Delete',tr_esd_path(tr_esd), method: :delete, data: {confirm: 'Delete Data ? '}, class: 'btn btn-danger' %>
+              <%= link_to 'Detail', tr_esd_path(tr_esd), class: 'btn btn-light' %>
+              <%= link_to 'Edit', edit_tr_esd_path(tr_esd), class: 'btn btn-primary' %>
+              
+            </td>
+      <% end %>
+</tbody>
+</tr>

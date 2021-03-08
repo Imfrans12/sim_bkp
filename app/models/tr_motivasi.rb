@@ -1,0 +1,2 @@
+class TrMotivasi < ApplicationRecord
+end

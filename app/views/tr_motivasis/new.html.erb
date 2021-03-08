@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_motivasi) do |tr_motivasi| %>
+
+
+        <div class="form-group">
+          <%= tr_motivasi.label :Tanggal %>
+          <%= tr_motivasi.text_field :tanggal, class:'form-control', type: 'date', placeholder: '',required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= tr_motivasi.label :Materi %>
+         <%= tr_motivasi.text_field :materi, class:'form-control', type: 'text', placeholder: '',required: true %>
+        </div>
+        <div class="form-group">
+           <%= tr_motivasi.label :Pemateri %>
+         <%= tr_motivasi.text_field :pemateri, class:'form-control', type: 'text', placeholder: '',required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_motivasi.label :Ringkasan %>
+          <%= tr_motivasi.text_field :ringkasan, class:'form-control', type: 'text', placeholder: '',required: true %>
+        </div>
+        <%= tr_motivasi.hidden_field :nama, value: current_ms_user.name %>
+        <%= tr_motivasi.hidden_field :status, value: "Menunggu Di Terima" %>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_motivasis', class: 'btn btn-primary' %>
+        </div>
+        <div style="float: right">
+  <%= tr_motivasi.submit :Save, class:'btn btn-success' %>
+</div>
+    <% end %>
+  </div>
+</div>

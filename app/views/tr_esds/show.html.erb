@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_esd) do |tr_esd| %>
+
+
+        <div class="form-group">
+          <%= tr_esd.label :Tanggal %>
+          <%= tr_esd.text_field :tanggal, class:'form-control', type: 'date', placeholder: '',disabled: true%>
+        </div>
+
+        <div class="form-group">
+          <%= tr_esd.label :Esensi_ESD %>
+         <%= tr_esd.text_field :esensi_esd, class:'form-control', type: 'text', placeholder: '',disabled: true%>
+        </div>
+        <div class="form-group">
+           <%= tr_esd.label :Jenis_kegiatan %>
+         <%= tr_esd.text_field :jenis_kegiatan, class:'form-control', type: 'text', placeholder: '',disabled: true %>
+        </div>
+        <div class="form-group">
+        	<center>
+          <%= tr_esd.label :Bukti %>
+          </center>
+          <br>
+          <% if @tr_esd.bukti.attached? %>
+          <img src="<%= (url_for(@tr_esd.bukti)) %>">
+          <% end %>
+        </div>
+        <div style="float: left">
+	<%= link_to 'Back', '/tr_esds', class: 'btn btn-primary' %>
+</div>
+
+    <% end %>
+  </div>
+</div>	

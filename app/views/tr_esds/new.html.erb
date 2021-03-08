@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_esd) do |tr_esd| %>
+
+
+        <div class="form-group">
+          <%= tr_esd.label :Tanggal %>
+          <%= tr_esd.text_field :tanggal, class:'form-control', type: 'date', placeholder: '', required: true%>
+        </div>
+
+        <div class="form-group">
+          <%= tr_esd.label :Esensi_ESD %>
+         <%= tr_esd.text_field :esensi_esd, class:'form-control', type: 'text', placeholder: '', required: true%>
+        </div>
+        <div class="form-group">
+           <%= tr_esd.label :Jenis_kegiatan %>
+         <%= tr_esd.text_field :jenis_kegiatan, class:'form-control', type: 'text', placeholder: '', required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_esd.label :Bukti %>
+          <%= tr_esd.file_field :bukti, class:'form-control', required: true %>
+        </div>
+        <%= tr_esd.hidden_field :nama, value: current_ms_user.name %>
+        <%= tr_esd.hidden_field :status, value: "Menunggu Di Terima" %>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_esds', class: 'btn btn-primary' %>
+        </div>
+        <div style="float: right">
+  <%= tr_esd.submit :Save, class:'btn btn-success' %>
+</div>
+
+    <% end %>
+  </div>
+</div>	

@@ -1,0 +1,2 @@
+class TrShalatDhuha < ApplicationRecord
+end

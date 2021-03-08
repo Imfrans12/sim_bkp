@@ -1,0 +1,43 @@
+<br>
+<center><h5>Perilaku Hidup Bersih Dan Sehat</h5></center>
+<div style="float: right">
+  <%= link_to 'Add Data', new_tr_phb_path, class: 'btn btn-success' %>
+</div>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Tanggal Olahraga</th>
+      <th scope="col">Aktifitas</th>
+      <th scope="col">Durasi</th>
+      <th scope="col">Tanggal Makan </th>
+      <th scope="col">Karbohidrat</th>
+      <th scope="col">Protein</th>
+      <th scope="col">Sayur</th>
+      <th scope="col">Buah</th>
+      <th scope="col">Status</th>
+      <th scope="col" width="300">Action</th>
+    </tr>
+  </thead>
+<% @tr_phbs.each_with_index do |tr_phb, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_phb.tanggal_olahraga %> </td>
+      <td> <%= tr_phb.aktifitas %> </td>
+      <td> <%= tr_phb.durasi %> </td>
+      <td> <%= tr_phb.tanggal_makan %> </td>
+      <td> <%= tr_phb.karbohidrat %> </td>
+      <td> <%= tr_phb.protein %> </td>
+      <td> <%= tr_phb.sayur %> </td>
+      <td> <%= tr_phb.buah %> </td>
+      <td> <%= tr_phb.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Delete',tr_phb_path(tr_phb), method: :delete, data: {confirm: 'Delete Data ? '}, class: 'btn btn-danger' %>
+              <%= link_to 'Detail', tr_phb_path(tr_phb), class: 'btn btn-light' %>
+              <%= link_to 'Edit', edit_tr_phb_path(tr_phb), class: 'btn btn-primary' %>
+              
+            </td>
+      <% end %>
+</tbody>
+</tr>

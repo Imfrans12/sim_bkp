@@ -1,0 +1,2 @@
+class TrShalatJumat < ApplicationRecord
+end

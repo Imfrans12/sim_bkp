@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_phb) do |tr_phb| %>
+
+
+        <div class="form-group">
+          <%= tr_phb.label :Tanggal_Olahraga %>
+         <%= tr_phb.text_field :tanggal_olahraga, class:'form-control', type: 'date', placeholder: '', required: true%>
+        </div>
+        <div class="form-group">
+           <%= tr_phb.label :Aktifitas %>
+         <%= tr_phb.text_field :aktifitas, class:'form-control', type: 'text', placeholder: '', required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_phb.label :Durasi %>
+         <%= tr_phb.text_field :durasi, class:'form-control', type: 'text', placeholder: '', required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_phb.label :Tanggal_Makan %>
+          <%= tr_phb.text_field :tanggal_makan, class:'form-control', type: 'date', placeholder: '', required: true%>
+        </div>
+        <div class="form-group">
+           <%= tr_phb.label :Karbohidrat %>
+         <%= tr_phb.text_field :karbohidrat, class:'form-control', type: 'text', placeholder: '', required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_phb.label :Protein %>
+         <%= tr_phb.text_field :protein, class:'form-control', type: 'text', placeholder: '', required: true %>
+        </div>
+        <div class="form-group">
+           <%=	 tr_phb.label :Sayur %>
+         <%= tr_phb.text_field :sayur, class:'form-control', type: 'text', placeholder: '', required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_phb.label :Buah %>
+         <%= tr_phb.text_field :buah, class:'form-control', type: 'text', placeholder: '', required: true %>
+        </div>
+        <%= tr_phb.hidden_field :nama, value: current_ms_user.name %>
+        <%= tr_phb.hidden_field :status, value: "Menunggu Di Terima" %>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_phbs', class: 'btn btn-primary' %>
+        </div>
+        <div style="float: right">
+  <%= tr_phb.submit :Save, class:'btn btn-success' %>
+</div>
+
+    <% end %>
+  </div>
+</div>	

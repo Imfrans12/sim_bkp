@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_shalt_dhuha) do |tr_shalt_dhuha| %>
+
+
+        <div class="form-group">
+          <%= tr_shalt_dhuha.label :Tanggal %>
+          <%= tr_shalt_dhuha.text_field :tanggal, class:'form-control', type: 'date', placeholder: '', required: true %>
+        </div>
+
+        <%= tr_shalt_dhuha.hidden_field :nama, value: current_ms_user.name %>
+        <%= tr_shalt_dhuha.hidden_field :status, value: "Menunggu Di Terima" %>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_shalt_dhuhas', class: 'btn btn-primary' %>
+        </div>
+       <div style="float: right">
+  <%= tr_shalt_dhuha.submit :Save, class:'btn btn-success' %>
+</div>
+    <% end %>
+  </div>
+</div>
