@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_jurnal) do |tr_jurnal| %>
+
+
+        <div class="form-group">
+          <%= tr_jurnal.label :Tanggal %>
+          <%= tr_jurnal.text_field :tanggal, class:'form-control', type: 'date', placeholder: '',required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= tr_jurnal.label :Waktu %>
+         <%= tr_jurnal.text_field :waktu, class:'form-control', type: 'time', placeholder: '',required: true %>
+        </div>
+        <div class="form-group">
+           <%= tr_jurnal.label :Jenis_Literasi %>
+         <%= tr_jurnal.text_field :jenis_literasi, class:'form-control', type: 'text', placeholder: '',required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_jurnal.label :Judul %>
+          <%= tr_jurnal.text_field :judul, class:'form-control', type: 'text', placeholder: '',required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_jurnal.label :Pengarang %>
+          <%= tr_jurnal.text_field :pengarang, class:'form-control', type: 'text', placeholder: '',required: true %>
+        </div>
+        <div class="form-group">
+          <%= tr_jurnal.label :Halaman %>
+          <%= tr_jurnal.text_field :halaman, class:'form-control', type: 'text', placeholder: '',required: true %>
+        </div>
+        
+        <%= tr_jurnal.hidden_field :nama, value: current_ms_user.name %>
+        <%= tr_jurnal.hidden_field :status, value: "Menunggu Di Terima" %>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_jurnals', class: 'btn btn-primary' %>
+        </div>
+        <div style="float: right">
+  <%= tr_jurnal.submit :Save, class:'btn btn-success' %>
+</div>
+    <% end %>
+  </div>
+</div>

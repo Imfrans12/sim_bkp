@@ -1,6 +1,7 @@
 class TrSikapsController < ApplicationController
 	def index
         @tr_sikap = TrSikap.where(:nama => current_ms_user.name)
+        @tr_sikaps = TrSikap.all
     end
 
      def show
@@ -41,6 +42,11 @@ class TrSikapsController < ApplicationController
     @tr_sikaps = TrSikap.all
   end
 
+   def activate
+    @tr_sikaps = TrSikap.find_by(:id=>params[:id])
+    @tr_sikaps.update(:status=>"Tersetujui")
+    redirect_to tr_sikaps_path, notice: "Data Accepted"
+  end
   def destroy
     @tr_sikaps = TrSikap.find(params[:id])
     @tr_sikaps.destroy

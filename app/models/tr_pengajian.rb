@@ -1,0 +1,2 @@
+class TrPengajian < ApplicationRecord
+end

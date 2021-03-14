@@ -1,21 +1,54 @@
-<div class="container-fluid">
-  <div class="row">
-    <%= form_for(@tr_shalat_dhuhas) do |tr_shalat_dhuha| %>
-
-
-        <div class="form-group">
-          <%= tr_shalat_dhuha.label :Tanggal %>
-          <%= tr_shalat_dhuha.text_field :tanggal, class:'form-control', type: 'date', placeholder: '', required: true %>
-        </div>
-
-        <%= tr_shalat_dhuha.hidden_field :nama, value: current_ms_user.name %>
-        <%= tr_shalat_dhuha.hidden_field :status, value: "Menunggu Di Terima" %>
-        <div style="float: left">
-  <%= link_to 'Back', '/tr_shalat_dhuhas', class: 'btn btn-primary' %>
-        </div>
-       <div style="float: right">
-  <%= tr_shalat_dhuha.submit :Save, class:'btn btn-success' %>
+<br>
+<center><h5>Shalat Dhuha</h5></center>
+<div style="float: right">
+  <%= link_to 'Add Data', new_tr_shalat_dhuha_path, class: 'btn btn-success' %>
 </div>
-    <% end %>
-  </div>
-</div>	
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Kode</th>
+      <th scope="col">Tanggal</th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
+      <th scope="col">Status</th>
+      <th scope="col" width="300">Action</th>
+    </tr>
+  </thead>
+  <% if current_ms_user.role == "1" %>
+<% @tr_shalat_dhuhas.each_with_index do |tr_shalat_dhuha, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_shalat_dhuha.kode_shalat %> </td>
+      <td> <%= tr_shalat_dhuha.tanggal %> </td>
+      <td> <%= tr_shalat_dhuha.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Delete',tr_shalat_dhuha_path(tr_shalat_dhuha), method: :delete, data: {confirm: 'Delete Data ? '}, class: 'btn btn-danger' %>
+              <%= link_to 'Detail', tr_shalat_dhuha_path(tr_shalat_dhuha), class: 'btn btn-light' %>
+              <%= link_to 'Edit', edit_tr_shalat_dhuha_path(tr_shalat_dhuha), class: 'btn btn-primary' %>
+              
+            </td>
+    
+</tbody>
+</tr>
+  <% end %>
+  <% end %>
+ <% if current_ms_user.role == "2" %>
+ <% @tr_shalat_dhuha.each_with_index do |tr_shalat_dhuha, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_shalat_dhuha.kode_shalat %> </td>
+      <td> <%= tr_shalat_dhuha.tanggal %> </td>
+      <td> <%= tr_shalat_dhuha.nama %> </td>
+      <td> <%= tr_shalat_dhuha.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Setuju',activate_dhuha_path(id:tr_shalat_dhuha.id), class: 'btn btn-primary', method: :patch%> 
+      </td>
+    
+</tbody>
+</tr>
+  <% end %>
+  <% end %>

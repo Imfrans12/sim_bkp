@@ -1,0 +1,62 @@
+<br>
+<center><h5>Ikhtisar Ceramah PHBI</h5></center>
+<div style="float: right">
+  <%= link_to 'Add Data', new_tr_ceramah_path, class: 'btn btn-success' %>
+</div>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Tanggal</th>
+      <th scope="col">Tempat</th>
+      <th scope="col">Judul</th>
+      <th scope="col">Pemateri</th>
+      <th scope="col">Kesimpulan</th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
+      <th scope="col">Status</th>
+      <th scope="col" width="300">Action</th>
+    </tr>
+  </thead>
+  <% if current_ms_user.role == "1" %>
+<% @tr_ceramahs.each_with_index do |tr_ceramah, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_ceramah.tanggal %> </td>
+      <td> <%= tr_ceramah.tempat %> </td>
+      <td> <%= tr_ceramah.judul %> </td>
+      <td> <%= tr_ceramah.pemateri %> </td>
+      <td> <%= tr_ceramah.kesimpulan %> </td>
+      <td> <%= tr_ceramah.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Delete',tr_ceramah_path(tr_ceramah), method: :delete, data: {confirm: 'Delete Data ? '}, class: 'btn btn-danger' %>
+              <%= link_to 'Detail', tr_ceramah_path(tr_ceramah), class: 'btn btn-light' %>
+              <%= link_to 'Edit', edit_tr_ceramah_path(tr_ceramah), class: 'btn btn-primary' %>
+              
+            </td>
+      
+</tbody>
+</tr>
+<% end %>
+<% end %>
+<% if current_ms_user.role == "2" %>
+<% @tr_ceramah.each_with_index do |tr_ceramah, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_ceramah.tanggal %> </td>
+      <td> <%= tr_ceramah.tempat %> </td>
+      <td> <%= tr_ceramah.judul %> </td>
+      <td> <%= tr_ceramah.pemateri %> </td>
+      <td> <%= tr_ceramah.kesimpulan %> </td>
+      <td> <%= tr_ceramah.nama %> </td>
+      <td> <%= tr_ceramah.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Setuju',activate_ceramah_path(id:tr_ceramah.id), class: 'btn btn-primary', method: :patch%> 
+      </td>
+</tbody>
+</tr>
+<% end %>
+<% end %>

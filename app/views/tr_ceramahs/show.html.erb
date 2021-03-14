@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_ceramah) do |tr_ceramah| %>
+
+
+        <div class="form-group">
+          <%= tr_ceramah.label :Tanggal %>
+          <%= tr_ceramah.text_field :tanggal, class:'form-control', type: 'date', placeholder: '', disabled: true %>
+        </div>
+
+        <div class="form-group">
+          <%= tr_ceramah.label :Tempat %>
+          <%= tr_ceramah.text_field :tempat, class:'form-control', type: 'text', placeholder: '', disabled: true %>
+        </div>
+
+        <div class="form-group">
+          <%= tr_ceramah.label :Judul %>
+          <%= tr_ceramah.text_field :judul, class:'form-control', type: 'text', placeholder: '', disabled: true %>
+        </div>
+
+        <div class="form-group">
+          <%= tr_ceramah.label :Pemateri %>
+          <%= tr_ceramah.text_field :pemateri, class:'form-control', type: 'text', placeholder: '', disabled: true %>
+        </div>
+
+        <div class="form-group">
+          <%= tr_ceramah.label :Kesimpulan %>
+          <%= tr_ceramah.text_field :kesimpulan, class:'form-control', type: 'text', placeholder: '', disabled: true %>
+        </div>
+
+        <%= tr_ceramah.hidden_field :nama, value: current_ms_user.name %>
+        <%= tr_ceramah.hidden_field :status, value: "Menunggu Di Terima" %>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_ceramahs', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>

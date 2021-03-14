@@ -11,10 +11,14 @@
       <th scope="col">Esensi ESD</th>
       <th scope="col">Jenis Kegiatan</th>
       <th scope="col">Bukti </th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
       <th scope="col">Status</th>
       <th scope="col" width="300">Action</th>
     </tr>
   </thead>
+  <% if current_ms_user.role == "1" %>
 <% @tr_esds.each_with_index do |tr_esd, index|%>
 <tbody>
 <tr>
@@ -30,6 +34,21 @@
               <%= link_to 'Edit', edit_tr_esd_path(tr_esd), class: 'btn btn-primary' %>
               
             </td>
+      <% end %>
+      <% end %>
+  <% if current_ms_user.role == "2" %>
+  <% @tr_esd.each_with_index do |tr_esd, index|%>
+  <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_esd.tanggal %> </td>
+      <td> <%= tr_esd.esensi_esd %> </td>
+      <td> <%= tr_esd.jenis_kegiatan %> </td>
+      <td> <img height="200px" width="200px" src="<%=(url_for(tr_esd.bukti))%>"> </td>
+      <td> <%= tr_esd.nama %> </td>
+      <td> <%= tr_esd.status %> </td>
+      <td class="text-center">
+        <%= link_to 'Setuju',activate_esd_path(id:tr_esd.id), class: 'btn btn-primary', method: :patch%> 
+      </td>
+      <% end %>
       <% end %>
 </tbody>
 </tr>

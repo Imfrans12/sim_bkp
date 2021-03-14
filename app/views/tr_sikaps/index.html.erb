@@ -12,9 +12,14 @@
       <th scope="col">Kode</th>
       <th scope="col">Saksi</th>
       <th scope="col">Status</th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
+      
       <th scope="col" width="300">Action</th>
     </tr>
   </thead>
+ <% if current_ms_user.role == "1" %>
 <% @tr_sikap.each_with_index do |tr_sikap, index|%>
 <tbody>
 <tr>
@@ -29,7 +34,26 @@
               <%= link_to 'Detail', tr_sikap_path(tr_sikap), class: 'btn btn-light' %>
               <%= link_to 'Edit', edit_tr_sikap_path(tr_sikap), class: 'btn btn-primary' %>
               
-            </td>
-      <% end %>
+    </td>
 </tbody>
+    <% end %>
+    <% end %>
+      <% if current_ms_user.role == "2" %>
+      <% @tr_sikaps.each_with_index do |tr_sikaps, index|%>
+      <tbody>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_sikaps.tanggal %> </td>
+      <td> <%= tr_sikaps.jenis_kode %> </td>
+      <td> <%= tr_sikaps.kode %> </td>
+      <td> <%= tr_sikaps.saksi %> </td>
+      <td> <%= tr_sikaps.status %> </td>
+      <td> <%= tr_sikaps.nama %> </td>
+      <td class="text-center">
+        <%= link_to 'Setuju',activate_path(id:tr_sikaps.id), class: 'btn btn-primary', method: :patch%> 
+      </td>
+  <% end %>
+  <% end %>
+</tbody>
+
+
 </tr>

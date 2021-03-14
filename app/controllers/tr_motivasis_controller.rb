@@ -1,6 +1,7 @@
 class TrMotivasisController < ApplicationController
    def index
        @tr_motivasis = TrMotivasi.where(:nama => current_ms_user.name)
+       @tr_motivasi = TrMotivasi.all
     end
 
      def show
@@ -40,7 +41,11 @@ class TrMotivasisController < ApplicationController
   def report
     @tr_motivasis = TrMotivasi.all
   end
-
+  def activate
+    @tr_motivasis = TrMotivasi.find_by(:id=>params[:id])
+    @tr_motivasis.update(:status=>"Tersetujui")
+    redirect_to tr_motivasis_path, notice: "Data Accepted"
+  end
   def destroy
     @tr_motivasis = TrMotivasi.find(params[:id])
     @tr_motivasis.destroy

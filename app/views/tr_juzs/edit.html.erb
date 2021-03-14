@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= form_for(@tr_juzs) do |tr_juz| %>
+
+
+        <div class="form-group">
+          <%= tr_juz.label :Tanggal %>
+          <%= tr_juz.text_field :tanggal, class:'form-control', type: 'date', placeholder: ''%>
+        </div>
+
+        <div class="form-group">
+          <%= tr_juz.label :Ayat %>
+         <%= tr_juz.text_field :ayat, class:'form-control', type: 'text', placeholder: ''%>
+        </div>
+        <%= tr_juz.hidden_field :nama, value: current_ms_user.name %>
+        <%= tr_juz.hidden_field :status, value: "Menunggu Di Terima" %>
+        <div style="float: left">
+  <%= link_to 'Back', '/tr_juzs', class: 'btn btn-primary' %>
+        </div>
+        <div style="float: right">
+  <%= tr_juz.submit :Save, class:'btn btn-success' %>
+</div>
+    <% end %>
+  </div>
+</div>

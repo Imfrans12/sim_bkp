@@ -1,6 +1,7 @@
 class TrEsdsController < ApplicationController
    def index
        @tr_esds = TrEsd.where(:nama => current_ms_user.name)
+       @tr_esd = TrEsd.all
     end
 
      def show
@@ -35,8 +36,14 @@ class TrEsdsController < ApplicationController
     else
       render 'edit'
     end
-
   end
+  
+  def activate
+    @tr_esds = TrEsd.find_by(:id=>params[:id])
+    @tr_esds.update(:status=>"Tersetujui")
+    redirect_to tr_esds_path, notice: "Data Accepted"
+  end
+
   def report
     @tr_esds = TrEsd.all
   end

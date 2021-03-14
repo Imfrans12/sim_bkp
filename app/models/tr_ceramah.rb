@@ -1,0 +1,2 @@
+class TrCeramah < ApplicationRecord
+end

@@ -1,0 +1,66 @@
+<br>
+<center><h5>Jurnal Membaca Tahap 1</h5></center>
+<div style="float: right">
+  <%= link_to 'Add Data', new_tr_jurnal_path, class: 'btn btn-success' %>
+</div>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Tanggal</th>
+      <th scope="col">Waktu</th>
+      <th scope="col">Jenis Literasi</th>
+      <th scope="col">Judul </th>
+      <th scope="col">Pengarang </th>
+      <th scope="col">Halaman</th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
+      <th scope="col">Status</th>
+      <th scope="col" width="300">Action</th>
+    </tr>
+  </thead>
+   <% if current_ms_user.role == "1" %>
+<% @tr_jurnals.each_with_index do |tr_jurnal, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_jurnal.tanggal %> </td>
+      <td> <%= tr_jurnal.waktu %> </td>
+      <td> <%= tr_jurnal.jenis_literasi %> </td>
+      <td> <%= tr_jurnal.judul %> </td>
+      <td> <%= tr_jurnal.pengarang %> </td>
+      <td> <%= tr_jurnal.halaman %> </td>
+      <td> <%= tr_jurnal.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Delete',tr_jurnal_path(tr_jurnal), method: :delete, data: {confirm: 'Delete Data ? '}, class: 'btn btn-danger' %>
+              <%= link_to 'Detail', tr_jurnal_path(tr_jurnal), class: 'btn btn-light' %>
+              <%= link_to 'Edit', edit_tr_jurnal_path(tr_jurnal), class: 'btn btn-primary' %>
+              
+            </td>
+     
+</tbody>
+</tr>
+ <% end %>
+  <% end %>
+  <% if current_ms_user.role == "2" %>
+<% @tr_jurnal.each_with_index do |tr_jurnal, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_jurnal.tanggal %> </td>
+      <td> <%= tr_jurnal.waktu %> </td>
+      <td> <%= tr_jurnal.jenis_literasi %> </td>
+      <td> <%= tr_jurnal.judul %> </td>
+      <td> <%= tr_jurnal.pengarang %> </td>
+      <td> <%= tr_jurnal.halaman %> </td>
+      <td> <%= tr_jurnal.nama %> </td>
+      <td> <%= tr_jurnal.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Setuju',activate_jurnal_path(id:tr_jurnal.id), class: 'btn btn-primary', method: :patch%> 
+      </td>
+     
+</tbody>
+</tr>
+ <% end %>
+  <% end %>

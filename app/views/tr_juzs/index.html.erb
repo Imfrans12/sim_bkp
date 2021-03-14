@@ -1,0 +1,54 @@
+<br>
+<center><h5>Juz Amma</h5></center>
+<div style="float: right">
+  <%= link_to 'Add Data', new_tr_juz_path, class: 'btn btn-success' %>
+</div>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Tanggal</th>
+      <th scope="col">Ayat</th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
+      <th scope="col">Status</th>
+      <th scope="col" width="300">Action</th>
+    </tr>
+  </thead>
+    <% if current_ms_user.role == "1" %>
+<% @tr_juzs.each_with_index do |tr_juz, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_juz.tanggal %> </td>
+      <td> <%= tr_juz.ayat %></td>
+      <td> <%= tr_juz.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Delete',tr_juz_path(tr_juz), method: :delete, data: {confirm: 'Delete Data ? '}, class: 'btn btn-danger' %>
+              <%= link_to 'Detail', tr_juz_path(tr_juz), class: 'btn btn-light' %>
+              <%= link_to 'Edit', edit_tr_juz_path(tr_juz), class: 'btn btn-primary' %>
+              
+            </td>
+      
+</tbody>
+</tr>
+<% end %>
+<% end %>
+<% if current_ms_user.role == "2" %>
+<% @tr_juz.each_with_index do |tr_juz, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_juz.tanggal %> </td>
+      <td> <%= tr_juz.ayat %></td>
+      <td> <%= tr_juz.nama %></td>
+      <td> <%= tr_juz.status %> </td>
+     <td class="text-center">
+          <%= link_to 'Setuju',activate_juz_path(id:tr_juz.id), class: 'btn btn-primary', method: :patch%> 
+            </td>
+      
+</tbody>
+</tr>
+<% end %>
+<% end %>

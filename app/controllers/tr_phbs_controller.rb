@@ -1,6 +1,7 @@
 class TrPhbsController < ApplicationController
   def index
        @tr_phbs = TrPhb.where(:nama => current_ms_user.name)
+       @tr_phb = TrPhb.all
     end
 
      def show
@@ -36,6 +37,11 @@ class TrPhbsController < ApplicationController
       render 'edit'
     end
 
+  end
+  def activate
+    @tr_phbs = TrPhb.find_by(:id=>params[:id])
+    @tr_phbs.update(:status=>"Tersetujui")
+    redirect_to tr_phbs_path, notice: "Data Accepted"
   end
   def report
     @tr_phbs = TrPhb.all

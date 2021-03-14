@@ -8,10 +8,14 @@
     <tr>
       <th scope="col">No</th>
       <th scope="col">Tanggal</th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
       <th scope="col">Status</th>
       <th scope="col" width="300">Action</th>
     </tr>
   </thead>
+  <% if current_ms_user.role == "1" %>
 <% @tr_shalat_jumats.each_with_index do |tr_shalat_jumat, index|%>
 <tbody>
 <tr>
@@ -24,6 +28,23 @@
               <%= link_to 'Edit', edit_tr_shalat_jumat_path(tr_shalat_jumat), class: 'btn btn-primary' %>
               
             </td>
-      <% end %>
+  
 </tbody>
 </tr>
+<% end %>
+<% end %>
+<% if current_ms_user.role == "2" %>
+<% @tr_shalat_jumat.each_with_index do |tr_shalat_jumat, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_shalat_jumat.tanggal %> </td>
+      <td> <%= tr_shalat_jumat.nama %> </td>
+      <td> <%= tr_shalat_jumat.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Setuju',activate_jumat_path(id:tr_shalat_jumat.id), class: 'btn btn-primary', method: :patch%> 
+      </td>
+</tbody>
+</tr>
+<% end %>
+<% end %>

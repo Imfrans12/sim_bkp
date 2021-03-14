@@ -1,9 +1,10 @@
 class TrShalatDhuhasController < ApplicationController
   def index
-       @tr_shalat_dhuhas = TrShalatDhuha.all
-    end
+       @tr_shalat_dhuhas = TrShalatDhuha.where(:nama => current_ms_user.name)
+       @tr_shalat_dhuha = TrShalatDhuha.all
+  end
 
-     def show
+  def show
     @tr_shalat_dhuha = TrShalatDhuha.find(params[:id])
   end
 
@@ -37,6 +38,11 @@ class TrShalatDhuhasController < ApplicationController
     end
 
   end
+  def activate
+    @tr_shalat_dhuhas = TrShalatDhuha.find_by(:id=>params[:id])
+    @tr_shalat_dhuhas.update(:status=>"Tersetujui")
+    redirect_to tr_shalat_dhuhas_path, notice: "Data Accepted"
+  end
   def report
     @tr_shalat_dhuhas = TrShalatDhuha.all
   end
@@ -48,6 +54,6 @@ class TrShalatDhuhasController < ApplicationController
   end
   private
   def tr_shalat_dhuhas_params
-    params.require(:tr_shalat_dhuha).permit(:id, :tanggal, :status, :nama)
+    params.require(:tr_shalat_dhuha).permit(:id, :tanggal, :status, :nama, :kode_shalat)
   end
 end

@@ -1,0 +1,2 @@
+class TrJuz < ApplicationRecord
+end

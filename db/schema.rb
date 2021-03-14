@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_160955) do
+ActiveRecord::Schema.define(version: 2021_03_11_064038) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,11 +55,76 @@ ActiveRecord::Schema.define(version: 2021_03_07_160955) do
     t.index ["email"], name: "index_ms_users_on_email", unique: true
   end
 
+  create_table "tr_ceramahs", force: :cascade do |t|
+    t.string "tanggal"
+    t.string "tempat"
+    t.string "judul"
+    t.string "pemateri"
+    t.string "kesimpulan"
+    t.string "nama"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tr_esds", force: :cascade do |t|
     t.string "tanggal"
     t.string "esensi_esd"
     t.string "jenis_kegiatan"
     t.string "bukti"
+    t.string "nama"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tr_jurnal2s", force: :cascade do |t|
+    t.string "tanggal"
+    t.string "judul"
+    t.string "pengarang"
+    t.string "resume"
+    t.string "nama"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tr_jurnal3s", force: :cascade do |t|
+    t.string "tanggal"
+    t.string "jumlah_text"
+    t.string "nilai"
+    t.string "nama"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tr_jurnals", force: :cascade do |t|
+    t.string "tanggal"
+    t.string "waktu"
+    t.string "jenis_literasi"
+    t.string "judul"
+    t.string "pengarang"
+    t.string "halaman"
+    t.string "nama"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tr_juzs", force: :cascade do |t|
+    t.string "tanggal"
+    t.string "ayat"
+    t.string "nama"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tr_keagamaans", force: :cascade do |t|
+    t.string "tanggal"
+    t.string "judul"
+    t.string "kesimpulan"
     t.string "nama"
     t.string "status"
     t.datetime "created_at", null: false
@@ -72,6 +137,17 @@ ActiveRecord::Schema.define(version: 2021_03_07_160955) do
     t.string "pemateri"
     t.string "ringkasan"
     t.string "nama"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+  end
+
+  create_table "tr_pengajians", force: :cascade do |t|
+    t.string "tanggal"
+    t.string "judul"
+    t.string "kesimpulan"
+    t.string "nama"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

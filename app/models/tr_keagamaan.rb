@@ -1,0 +1,2 @@
+class TrKeagamaan < ApplicationRecord
+end

@@ -1,6 +1,7 @@
 class TrShalatJumatsController < ApplicationController
   def index
        @tr_shalat_jumats = TrShalatJumat.where(:nama => current_ms_user.name)
+       @tr_shalat_jumat = TrShalatJumat.all
     end
 
      def show
@@ -40,7 +41,11 @@ class TrShalatJumatsController < ApplicationController
   def report
     @tr_shalat_jumats = TrShalatJumat.all
   end
-
+def activate
+    @tr_shalat_jumats = TrShalatJumat.find_by(:id=>params[:id])
+    @tr_shalat_jumats.update(:status=>"Tersetujui")
+    redirect_to tr_shalat_jumats_path, notice: "Data Accepted"
+  end
   def destroy
     @tr_shalat_jumats = TrShalatJumat.find(params[:id])
     @tr_shalat_jumats.destroy

@@ -1,0 +1,2 @@
+module TrJurnalsHelper
+end

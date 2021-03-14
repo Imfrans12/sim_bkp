@@ -1,6 +1,7 @@
 class TrShalatFardusController < ApplicationController
   def index
        @tr_shalat_fardus = TrShalatFardu.where(:nama => current_ms_user.name)
+       @tr_shalat_fardu = TrShalatFardu.all
     end
 
      def show
@@ -40,7 +41,11 @@ class TrShalatFardusController < ApplicationController
   def report
     @tr_shalat_fardus = TrShalatFardu.all
   end
-
+  def activate
+    @tr_shalat_fardus = TrShalatFardu.find_by(:id=>params[:id])
+    @tr_shalat_fardus.update(:status=>"Tersetujui")
+    redirect_to tr_shalat_fardus_path, notice: "Data Accepted"
+  end
   def destroy
     @tr_shalat_fardus = TrShalatFardu.find(params[:id])
     @tr_shalat_fardus.destroy

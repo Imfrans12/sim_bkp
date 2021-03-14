@@ -15,10 +15,14 @@
       <th scope="col">Protein</th>
       <th scope="col">Sayur</th>
       <th scope="col">Buah</th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
       <th scope="col">Status</th>
       <th scope="col" width="300">Action</th>
     </tr>
   </thead>
+  <% if current_ms_user.role == "1" %>
 <% @tr_phbs.each_with_index do |tr_phb, index|%>
 <tbody>
 <tr>
@@ -38,6 +42,29 @@
               <%= link_to 'Edit', edit_tr_phb_path(tr_phb), class: 'btn btn-primary' %>
               
             </td>
-      <% end %>
 </tbody>
 </tr>
+<% end %>
+<% end %>
+ <% if current_ms_user.role == "2" %>
+ <% @tr_phb.each_with_index do |tr_phb, index|%>
+ <tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_phb.tanggal_olahraga %> </td>
+      <td> <%= tr_phb.aktifitas %> </td>
+      <td> <%= tr_phb.durasi %> </td>
+      <td> <%= tr_phb.tanggal_makan %> </td>
+      <td> <%= tr_phb.karbohidrat %> </td>
+      <td> <%= tr_phb.protein %> </td>
+      <td> <%= tr_phb.sayur %> </td>
+      <td> <%= tr_phb.buah %> </td>
+      <td> <%= tr_phb.nama %> </td>
+      <td> <%= tr_phb.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Setuju',activate_phbs_path(id:tr_phb.id), class: 'btn btn-primary', method: :patch%> 
+      </td>
+</tbody>
+</tr>
+<% end %>
+<% end %>

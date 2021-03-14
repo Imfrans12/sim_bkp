@@ -11,9 +11,14 @@
       <th scope="col">Materi</th>
       <th scope="col">Pemateri</th>
       <th scope="col">Ringkasan </th>
+      <% if current_ms_user.role == "2" %>
+      <th scope="col">Nama</th>
+      <% end %>
+      <th scope="col">Status</th>
       <th scope="col" width="300">Action</th>
     </tr>
   </thead>
+   <% if current_ms_user.role == "1" %>
 <% @tr_motivasis.each_with_index do |tr_motivasi, index|%>
 <tbody>
 <tr>
@@ -22,12 +27,32 @@
       <td> <%= tr_motivasi.materi %> </td>
       <td> <%= tr_motivasi.pemateri %> </td>
       <td> <%= tr_motivasi.ringkasan %> </td>
+      <td> <%= tr_motivasi.status %> </td>
      <td class="text-center">
         <%= link_to 'Delete',tr_motivasi_path(tr_motivasi), method: :delete, data: {confirm: 'Delete Data ? '}, class: 'btn btn-danger' %>
               <%= link_to 'Detail', tr_motivasi_path(tr_motivasi), class: 'btn btn-light' %>
               <%= link_to 'Edit', edit_tr_motivasi_path(tr_motivasi), class: 'btn btn-primary' %>
               
             </td>
+            <% end %>
+      <% end %>
+    </tr>
+  </tbody>
+      <% if current_ms_user.role == "2" %>
+      <% @tr_motivasi.each_with_index do |tr_motivasis, index|%>
+<tbody>
+<tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td> <%= tr_motivasis.tanggal %> </td>
+      <td> <%= tr_motivasis.materi %> </td>
+      <td> <%= tr_motivasis.pemateri %> </td>
+      <td> <%= tr_motivasis.ringkasan %> </td>
+      <td> <%= tr_motivasis.nama %> </td>
+       <td> <%= tr_motivasis.status %> </td>
+     <td class="text-center">
+        <%= link_to 'Setuju',activate_motivasi_path(id:tr_motivasis.id), class: 'btn btn-primary', method: :patch%> 
+      </td>
+            <% end %>
       <% end %>
 </tbody>
 </tr>
